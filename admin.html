@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>m-mad.com minecraft Admin</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="description" content="Admin Details of the m-mad.com minecraft server" />
+	<meta name="keywords" content="minecraft server admin details" />
+	<script type="text/javascript" src="jquery.1.9.1.js"> charset="utf-8"></script>
+	<script type="text/javascript" src="jquery.hoverIntent.js"> charset="utf-8"></script>
+	<script type="text/javascript" src="script.js"> charset="utf-8"></script>
+	<link rel="stylesheet" href="common.css" type="text/css" />
+	<link rel="stylesheet" href="menus.css" type="text/css" />
+</head>
+<body>
+<div id="container">
+	<div id="header">
+			<h1>
+			m-mad Admin
+			</h1>
+	</div>
+
+	<div id=content>
+			<h2>
+				Welcome!
+			</h2>
+		<ul id="menu">
+        <li>
+			<a href="#">Goodies</a>
+				<ul class="active">
+				<li><a href="http://minecraftwallpapers.net/">minecraft wallpapers</a></li>              
+                </ul>
+        </li>
+        <li>
+			<a href="#">About Us</a>
+				<ul>
+                <li><a href="#">Privacy Statement</a></li>
+                <li><a href="#">Terms and Conditions</a></li>
+                <li><a href="#">Contact Us</a></li>
+                </ul>
+        </li>
+        <li>
+			<a href="#">Administration</a>
+                <ul>
+                <li><a href="admin.html">Admin and Oper lists</a></li>
+                <li><a href="properties.html">Server Properties</a></li>
+                <li><a href="command.html">Stop / Start Server (coming soon)</a></li>
+                </ul>
+		</li>
+    </ul>
+
+	<h2>Admin List</h2>
+<?php
+$fullPath = '/usr/local/minecraft/admin.txt';
+
+if ($fd = fopen ($fullPath, "r")) {
+        $fsize = filesize($fullPath);
+
+        while(!feof($fd)) {
+                $buffer = fread($fd, 2048);
+                $buffer = str_replace ("\n", "</BR>", $buffer);
+                echo $buffer;
+        }
+}
+fclose ($fd);
+
+?>
+
+	<h2>Op List</h2>
+<?php
+$fullPath = '/usr/local/minecraft/ops.txt';
+
+if ($fd = fopen ($fullPath, "r")) {
+        $fsize = filesize($fullPath);
+
+        while(!feof($fd)) {
+                $buffer = fread($fd, 2048);
+                $buffer = str_replace ("\n", "</BR>", $buffer);
+                echo $buffer;
+        }
+}
+fclose ($fd);
+
+?>
+
+	<h2>Banned </h2>
+<?php
+$fullPath = '/usr/local/minecraft/banned-players.txt';
+
+if ($fd = fopen ($fullPath, "r")) {
+	$fsize = filesize($fullPath);
+
+	while(!feof($fd)) {
+		$buffer = fread($fd, 2048);
+                $buffer = str_replace ("\n", "</BR>", $buffer);
+		echo $buffer;
+	}
+}
+fclose ($fd);
+
+?>      
+	</div>
+		
+	<div id=footer>
+			<p>
+				&copy; Copyright 2013 m-mad.com Productions
+			</p>
+	
+<?php
+$fullPath = '/usr/local/minecraft/status.txt';
+
+if ($fd = fopen ($fullPath, "r")) {
+        $fsize = filesize($fullPath);
+
+        while(!feof($fd)) {
+                $buffer = fread($fd, 2048);
+                $buffer = str_replace ("\n", "</BR>", $buffer);
+                echo "</br>".$buffer;
+        }
+}
+fclose ($fd);
+
+?>			
+	</div>
+</div>
+</body>
+</html>

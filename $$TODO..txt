@@ -1,0 +1,13 @@
+setup mail (g3ner8tion@m-mad.com martin@m-mad.com
+		n/a
+Setup AWS for m-mad.com
+		done
+
+Setup Command Blocks
+		done
+
+Setup homepage 
+		n/a
+
+World Editor (Bukkit Terrain Control)
+		
